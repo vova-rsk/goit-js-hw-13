@@ -2,6 +2,8 @@ import { appendPhotoCardsMarkup, clearPhotoCardsMarkup } from './components/rend
 import { showSuccesMessage, showFailureMessage } from './components/messages';
 import refs from './components/refs';
 import PhotoApiService from './components/photo-service';
+import makeSmoothScroll from './components/smooth-scroll';
+import lightboxRefresh from './components/lightbox';
 
 const API_KEY = '22441039-e3c3a22ef42346706974d6393';
 const QUANTITY_PER_PAGE = 40;
@@ -52,7 +54,7 @@ export const onSearchButtonClick = e => {
             }
             
             search.incrementPage();
-            search.incrementRenderedCards(data);
+            search.incrementRenderedCards(data.hits.length);
             search.getMaxCards(data.totalHits);
             
             showSuccesMessage(data.totalHits);
@@ -65,6 +67,8 @@ export const onSearchButtonClick = e => {
             }
 
             LoadMoreButtonShow();
+            makeSmoothScroll();
+            lightboxRefresh();
         })
         .catch(error => console.log(error));
 };
@@ -75,7 +79,7 @@ export const onLoadMoreButtonClick = () => {
         .then(data => {
           
             search.incrementPage();
-            search.incrementRenderedCards(data);
+            search.incrementRenderedCards(data.hits.length);
             
             appendPhotoCardsMarkup(data.hits);
             
@@ -86,6 +90,9 @@ export const onLoadMoreButtonClick = () => {
             }
             
             LoadMoreButtonShow();
+            makeSmoothScroll();
+            lightboxRefresh();
         })
         .catch(error => console.log(error));
 };
+

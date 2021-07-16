@@ -48,8 +48,8 @@ export default class PhotoApiService {
     }
 
     /*Метод для вычисления текущего значения количества отрендеренных фото-карточек*/
-    incrementRenderedCards(data) {
-        this.shownCards += data.hits.length;
+    incrementRenderedCards(value) {
+        this.shownCards += value;
     }
 
     /*Метод для сброса текущего значения количества отрендеренных фото-карточек*/

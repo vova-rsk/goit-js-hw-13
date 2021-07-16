@@ -1,4 +1,3 @@
-
 import '@fortawesome/fontawesome-free/js/brands';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/fontawesome';
@@ -10,4 +9,4 @@ import { onPageLoadind, onSearchButtonClick, onLoadMoreButtonClick } from './js/
 
 document.addEventListener('DOMContentLoaded', onPageLoadind);
 refs.searchForm.addEventListener('submit', onSearchButtonClick);
-refs.loadMoreButton.addEventListener('click',onLoadMoreButtonClick);
+refs.loadMoreButton.addEventListener('click', onLoadMoreButtonClick);
