@@ -1,9 +1,10 @@
 import { appendPhotoCardsMarkup, clearPhotoCardsMarkup } from './components/render';
 import { showSuccesMessage, showFailureMessage } from './components/messages';
-
 import refs from './components/refs';
 import PhotoApiService from './components/photo-service';
 
+const API_KEY = '22441039-e3c3a22ef42346706974d6393';
+const QUANTITY_PER_PAGE = 40;
 const search = new PhotoApiService();
 
 /*Функция включения отображения кнопки LoadMore*/
@@ -36,7 +37,7 @@ export const onSearchButtonClick = e => {
     search.resetPage();
     search.resetRenderedCards();
     search.getSearchQuery(searchQuery);
-    search.fetchArticles()
+    search.fetchArticles(API_KEY, QUANTITY_PER_PAGE)
         .then(data => {
             if (data.hits.length === 0) {
                 showFailureMessage('Sorry, there are no images matching your search query. Please try again.');
@@ -69,7 +70,7 @@ export const onSearchButtonClick = e => {
 
 /*Обработчик клика на кнопку LoadMore*/
 export const onLoadMoreButtonClick = () => {
-    search.fetchArticles()
+    search.fetchArticles(API_KEY, QUANTITY_PER_PAGE)
         .then(data => {
           
             search.incrementPage();
