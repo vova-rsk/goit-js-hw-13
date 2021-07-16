@@ -8,7 +8,7 @@ var t=arguments[3];!function(){"use strict";function e(t){return(e="function"==t
 },{}],"Y5dV":[function(require,module,exports) {
 
 },{}],"EVoz":[function(require,module,exports) {
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e={searchForm:document.querySelector("#search-form"),searchInput:document.querySelector("#search-form input"),searchButton:document.querySelector("#search-form button"),loadMoreButton:document.querySelector(".load-more"),gallery:document.querySelector(".gallery")};exports.default=e;
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;var e={searchForm:document.querySelector("#search-form"),loadMoreButton:document.querySelector(".load-more"),gallery:document.querySelector(".gallery")};exports.default=e;
 },{}],"pAws":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -95,4 +95,4 @@ var t=arguments[3];function e(t){return(e="function"==typeof Symbol&&"symbol"==t
 },{"./components/render":"Olcr","./components/messages":"n8Dx","./components/refs":"EVoz","./components/photo-service":"KBNS","./components/smooth-scroll":"uD5J","./components/lightbox":"V27S"}],"Focm":[function(require,module,exports) {
 "use strict";require("@fortawesome/fontawesome-free/js/brands"),require("@fortawesome/fontawesome-free/js/solid"),require("@fortawesome/fontawesome-free/js/fontawesome"),require("modern-normalize"),require("./sass/main.scss");var e=r(require("./js/components/refs")),o=require("./js/app");function r(e){return e&&e.__esModule?e:{default:e}}document.addEventListener("DOMContentLoaded",o.onPageLoadind),e.default.searchForm.addEventListener("submit",o.onSearchButtonClick),e.default.loadMoreButton.addEventListener("click",o.onLoadMoreButtonClick);
 },{"@fortawesome/fontawesome-free/js/brands":"akdV","@fortawesome/fontawesome-free/js/solid":"nDWT","@fortawesome/fontawesome-free/js/fontawesome":"A9bg","modern-normalize":"Y5dV","./sass/main.scss":"Y5dV","./js/components/refs":"EVoz","./js/app":"QdeU"}]},{},["Focm"], null)
-//# sourceMappingURL=/goit-js-hw-13/src.5739b64f.js.map
+//# sourceMappingURL=/goit-js-hw-13/src.ae029393.js.map
