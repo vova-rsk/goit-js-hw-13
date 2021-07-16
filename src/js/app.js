@@ -42,10 +42,12 @@ export const onSearchButtonClick = e => {
             
             if (data.hits.length === 0) {
                 showFailureMessage('Sorry, there are no images matching your search query. Please try again.');
+                photoApiService.restoreSearchInfo();
+
                 if (!photoApiService.isFinishChecking()) {
-                    photoApiService.restoreSearchInfo();
                     LoadMoreButtonShow();
-                }
+                } 
+                             
                 return;
             }
             
@@ -56,10 +58,9 @@ export const onSearchButtonClick = e => {
             
             if (photoApiService.isFinishChecking()) {
                 showFailureMessage("We're sorry, but you've reached the end of search results.");
-                LoadMoreButtonHide();
                 return;
             }
-            
+
             LoadMoreButtonShow();
         });
 };
@@ -69,11 +70,6 @@ export const onLoadMoreButtonClick = () => {
     photoApiService.fetchArticles()
         .then(data => {
         
-            if (data.hits.length === 0) {
-                showFailureMessage('Oops, something went wrong');
-                return;
-            }
-            
             appendPhotoCardsMarkup(data.hits);
             
             if (photoApiService.isFinishChecking()) {
@@ -81,7 +77,7 @@ export const onLoadMoreButtonClick = () => {
                 LoadMoreButtonHide();
                 return;
             }
-            
+
             LoadMoreButtonShow();
         });
 };

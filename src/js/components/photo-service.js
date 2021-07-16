@@ -23,7 +23,6 @@ export default class PhotoApiService {
         
         return fetch(url)
             .then(response => {
-                console.log(response);
                 if (!response.ok) {
                     throw new Error(response.status);
                 }
@@ -68,16 +67,18 @@ export default class PhotoApiService {
         return (this.shownCards >= this.totalCards);
     }
 
-    /* Метод для бекапа предыдущего поискового ключа и текущей страницы*/
+    /* Метод для бекапа данных*/
     backupSearchInfo() {
         this.backup.searchQuery = this.searchQuery;
         this.backup.page = this.page;
+        this.backup.shownCards = this.shownCards;
     }
 
-    /* Метод для восстановление предыдущего поискового ключа и текущей страницы*/
+    /* Метод для восстановление данных до состояния предыдущего успешного запроса*/
     restoreSearchInfo() {
         this.searchQuery = this.backup.searchQuery;
         this.page = this.backup.page;
+        this.shownCards = this.backup.shownCards;
     }
 
     /*Геттер и сеттер*/
