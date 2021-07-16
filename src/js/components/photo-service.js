@@ -28,12 +28,7 @@ export default class PhotoApiService {
                 }
                 return response.json();
             })
-            .then(data => {
-                this.incrementPage();
-                this.incrementRenderedCards(data);
-                
-                return data;
-            })
+            .then(data => data)
             .catch(error => console.error(error));
     }
 
@@ -68,14 +63,14 @@ export default class PhotoApiService {
     }
 
     /* Метод для бекапа данных*/
-    backupSearchInfo() {
+    backupSearchData() {
         this.backup.searchQuery = this.searchQuery;
         this.backup.page = this.page;
         this.backup.shownCards = this.shownCards;
     }
 
     /* Метод для восстановление данных до состояния предыдущего успешного запроса*/
-    restoreSearchInfo() {
+    restoreSearchData() {
         this.searchQuery = this.backup.searchQuery;
         this.page = this.backup.page;
         this.shownCards = this.backup.shownCards;

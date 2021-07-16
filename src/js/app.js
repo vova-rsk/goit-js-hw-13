@@ -4,7 +4,7 @@ import { showSuccesMessage, showFailureMessage } from './components/messages';
 import refs from './components/refs';
 import PhotoApiService from './components/photo-service';
 
-const photoApiService = new PhotoApiService();
+const search = new PhotoApiService();
 
 /*Функция включения отображения кнопки LoadMore*/
 export const LoadMoreButtonShow = () => {
@@ -25,38 +25,40 @@ export const onPageLoadind = () => {
 export const onSearchButtonClick = e => {
     e.preventDefault();
     LoadMoreButtonHide();
-    const searchQuery = e.currentTarget.elements.searchQuery.value.trim();
 
+    const searchQuery = e.currentTarget.elements.searchQuery.value.trim();
     if (searchQuery === '') {
         showFailureMessage('Please type your query and try again.');
         return;
     }
 
-    photoApiService.backupSearchInfo();
-    photoApiService.getSearchQuery(searchQuery);
-    photoApiService.resetPage();
-    photoApiService.resetRenderedCards();
-
-    photoApiService.fetchArticles()
+    search.backupSearchData();
+    search.resetPage();
+    search.resetRenderedCards();
+    search.getSearchQuery(searchQuery);
+    search.fetchArticles()
         .then(data => {
-            
             if (data.hits.length === 0) {
                 showFailureMessage('Sorry, there are no images matching your search query. Please try again.');
-                photoApiService.restoreSearchInfo();
+                
+                /*костыль на случай возможности продолжить поиск по предыдущему ключу, если вдруг с новым поиском не сложилось..*/
+                search.restoreSearchData();
 
-                if (!photoApiService.isFinishChecking()) {
+                if (!search.isFinishChecking()) {
                     LoadMoreButtonShow();
                 } 
-                             
                 return;
             }
             
-            photoApiService.getMaxCards(data.totalHits);
+            search.incrementPage();
+            search.incrementRenderedCards(data);
+            search.getMaxCards(data.totalHits);
+            
             showSuccesMessage(data.totalHits);
             clearPhotoCardsMarkup();
             appendPhotoCardsMarkup(data.hits);
             
-            if (photoApiService.isFinishChecking()) {
+            if (search.isFinishChecking()) {
                 showFailureMessage("We're sorry, but you've reached the end of search results.");
                 return;
             }
@@ -67,17 +69,20 @@ export const onSearchButtonClick = e => {
 
 /*Обработчик клика на кнопку LoadMore*/
 export const onLoadMoreButtonClick = () => {
-    photoApiService.fetchArticles()
+    search.fetchArticles()
         .then(data => {
-        
+          
+            search.incrementPage();
+            search.incrementRenderedCards(data);
+            
             appendPhotoCardsMarkup(data.hits);
             
-            if (photoApiService.isFinishChecking()) {
+            if (search.isFinishChecking()) {
                 showFailureMessage("We're sorry, but you've reached the end of search results.");
                 LoadMoreButtonHide();
                 return;
             }
-
+            
             LoadMoreButtonShow();
         });
 };
