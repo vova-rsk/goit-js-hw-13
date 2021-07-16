@@ -42,7 +42,7 @@ export const onSearchButtonClick = e => {
             if (data.hits.length === 0) {
                 showFailureMessage('Sorry, there are no images matching your search query. Please try again.');
                 
-                /*костыль на случай возможности продолжить поиск по предыдущему ключу, если вдруг с новым поиском не сложилось..*/
+                /*костыль на случай возможности продолжить поиск с loadMoreButton, если вдруг с новым поиском не сложилось..*/
                 search.restoreSearchData();
 
                 if (!search.isFinishChecking()) {
@@ -65,10 +65,11 @@ export const onSearchButtonClick = e => {
             }
 
             LoadMoreButtonShow();
-        });
+        })
+        .catch(error => console.log(error));
 };
 
-/*Обработчик клика на кнопку LoadMore*/
+/*Обработчик клика на кнопку LoadMore (не через async)*/
 export const onLoadMoreButtonClick = () => {
     search.fetchArticles(API_KEY, QUANTITY_PER_PAGE)
         .then(data => {
@@ -85,5 +86,6 @@ export const onLoadMoreButtonClick = () => {
             }
             
             LoadMoreButtonShow();
-        });
+        })
+        .catch(error => console.log(error));
 };

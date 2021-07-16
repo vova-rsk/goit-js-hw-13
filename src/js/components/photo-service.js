@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /*Класс для работы с Pixabay API*/
 export default class PhotoApiService {
     constructor() {
@@ -13,27 +15,22 @@ export default class PhotoApiService {
         this.searchQuery = searchQuery;
     }
 
-    /*Метод для отправки поискового запроса*/
-    fetchArticles(apiKey, pageLimit) {
-        const urlParams = {
-            baseUrl: 'https://pixabay.com/api/',
+    /*Метод (через async/await) для отправки поискового запроса */
+    async fetchArticles(apiKey, pageLimit) {
+        const baseUrl = 'https://pixabay.com/api/';
+        const params = {
+            key: apiKey,
+            q: this.searchQuery,
             image_type: 'photo',
             orientation: 'horizontal',
             safesearch: true,
             page: this.page,
             per_page:pageLimit
         };
-
-        return fetch(`${urlParams.baseUrl}?key=${apiKey}&q=${this.searchQuery}&image_type=${urlParams.image_type}&orientation=${urlParams.orientation}&safesearch=${urlParams.safesearch}&page=${this.page}&per_page=${pageLimit}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(response.status);
-                }
-                return response.json();
-            })
-            .then(data => data)
-            .catch(error => console.error(error));
+        const response = await axios.get(baseUrl,{params});
+        return response.data;
     }
+
 
     /*Метод для фиксации макс. количества найденных фотографий*/
     getMaxCards(value) {
