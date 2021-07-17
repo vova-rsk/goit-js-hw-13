@@ -77,7 +77,6 @@ export const onSearchButtonClick = e => {
 export const onLoadMoreButtonClick = () => {
     search.fetchArticles(API_KEY, QUANTITY_PER_PAGE)
         .then(data => {
-          
             search.incrementPage();
             search.incrementRenderedCards(data.hits.length);
             
