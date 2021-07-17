@@ -12,7 +12,7 @@ export default ({ newSearch }) => {
         .firstElementChild.getBoundingClientRect();
     
     window.scrollBy({
-        top: cardHeight * 1.5+25,
+        top: cardHeight * 2,
         behavior: 'smooth',
     });
 };
