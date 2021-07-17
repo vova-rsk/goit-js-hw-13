@@ -23,6 +23,14 @@ $card-set-gap: 30px;
   margin-left: 30px;
   border-radius: 5px;
   overflow: hidden;
+  transition: transform 250ms;
+
+  &:hover {
+    transform: scale(1.03);
+    -webkit-box-shadow: 12px 19px 17px -5px rgba(34, 60, 80, 0.27);
+    -moz-box-shadow: 12px 19px 17px -5px rgba(34, 60, 80, 0.27);
+    box-shadow: 12px 19px 17px -5px rgba(34, 60, 80, 0.27);
+  }
 }
 
 .info {
@@ -50,7 +58,7 @@ $card-set-gap: 30px;
   display: block;
   margin-top: 30px;
   width: 100px;
-  height: 30px;
+  height: 40px;
   margin-left: auto;
   margin-right: auto;
   color: #fff;
