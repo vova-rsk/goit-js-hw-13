@@ -1,11 +1,18 @@
-export default () => {
+export default ({ newSearch }) => {
+    if (newSearch) {
+        window.scroll({
+            top: 0,
+            behavior: 'smooth',
+        })
+        return;
+    }
+
     const { height: cardHeight } = document
         .querySelector('.gallery')
         .firstElementChild.getBoundingClientRect();
-    console.log({ height: cardHeight });
     
     window.scrollBy({
-        top: cardHeight * 2,
+        top: cardHeight * 1.5+25,
         behavior: 'smooth',
     });
 };

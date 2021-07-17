@@ -67,7 +67,7 @@ export const onSearchButtonClick = e => {
             }
 
             LoadMoreButtonShow();
-            makeSmoothScroll();
+            makeSmoothScroll({newSearch:true});
             lightboxRefresh();
         })
         .catch(error => console.log(error));
@@ -90,7 +90,7 @@ export const onLoadMoreButtonClick = () => {
             }
             
             LoadMoreButtonShow();
-            makeSmoothScroll();
+            makeSmoothScroll({newSearch:false});
             lightboxRefresh();
         })
         .catch(error => console.log(error));
