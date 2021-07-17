@@ -4,7 +4,7 @@
  */
 
 // Стили для файла с примером HTML-фрагмента
-@import './base';
-@import './search-form';
-@import './gallery';
+@import './base/base';
+@import './components/search-form';
+@import './components/gallery';
 @import '../../node_modules/simplelightbox/src/simple-lightbox';

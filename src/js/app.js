@@ -1,7 +1,7 @@
 import { appendPhotoCardsMarkup, clearPhotoCardsMarkup } from './components/render';
 import { showSuccesMessage, showFailureMessage } from './components/messages';
 import refs from './components/refs';
-import PhotoApiService from './components/photo-service';
+import PhotoApiService from './api/photo-service';
 import makeSmoothScroll from './components/smooth-scroll';
 import lightboxRefresh from './components/lightbox';
 
@@ -20,7 +20,7 @@ export const LoadMoreButtonHide = () => {
 };
 
 /*Функция применения базовых настроек при отрисовке DOM-дерева*/
-export const onPageLoadind = () => {
+export const onPageLoading = () => {
     LoadMoreButtonHide();
 };
 
@@ -95,4 +95,3 @@ export const onLoadMoreButtonClick = () => {
         })
         .catch(error => console.log(error));
 };
-
