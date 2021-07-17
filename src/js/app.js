@@ -19,11 +19,6 @@ export const LoadMoreButtonHide = () => {
     refs.loadMoreButton.classList.add('is-hidden');
 };
 
-/*Функция применения базовых настроек при отрисовке DOM-дерева*/
-export const onPageLoading = () => {
-    LoadMoreButtonHide();
-};
-
 /*Обработчик клика на кнопку Search*/
 export const onSearchButtonClick = e => {
     e.preventDefault();
