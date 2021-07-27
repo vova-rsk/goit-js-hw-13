@@ -22,6 +22,7 @@ $card-set-gap: 30px;
   margin-top: 30px;
   margin-left: 30px;
   border-radius: 5px;
+  cursor: pointer;
   overflow: hidden;
   transition: transform 250ms, box-shadow 250ms;
 
@@ -83,4 +84,13 @@ $card-set-gap: 30px;
 .gallery a {
   text-decoration: none;
   color: #000;
+  cursor: auto;
+}
+
+.search-form {
+  box-shadow: 0px 1px 10px 2px rgba(34, 60, 80, 0.65);
+}
+
+.search-form input {
+  outline: none;
 }
