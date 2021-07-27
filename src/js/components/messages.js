@@ -11,7 +11,7 @@ export const showSuccesMessage = elemsQuantity => {
     );
 };
 
-export const showFailureMessage = (message) => {
+export const showFailureMessage = message => {
     Notify.failure(
         message,
         {

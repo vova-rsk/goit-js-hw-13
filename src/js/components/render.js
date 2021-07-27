@@ -2,7 +2,7 @@ import templatePhotoCardList from '../../templates/photo-card-tmp.hbs';
 import refs from './refs';
 
 /*Функция добавления разметки в галлерею*/
-export const appendPhotoCardsMarkup = (hits) => {
+export const appendPhotoCardsMarkup = hits => {
     refs.gallery.insertAdjacentHTML('beforeend', templatePhotoCardList(hits));
 };
 
