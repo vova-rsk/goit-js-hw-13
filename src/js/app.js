@@ -44,6 +44,7 @@ export const onSearchButtonClick = e => {
 
                 if (!search.isFinishChecking()) {
                     LoadMoreButtonShow();
+                    lightboxRefresh();
                 } 
                 return;
             }
@@ -58,6 +59,7 @@ export const onSearchButtonClick = e => {
             
             if (search.isFinishChecking()) {
                 showFailureMessage("We're sorry, but you've reached the end of search results.");
+                lightboxRefresh();
                 return;
             }
 
